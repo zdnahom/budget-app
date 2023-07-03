@@ -8,8 +8,8 @@ RSpec.describe User, type: :model do
 
   describe 'Validations' do
     it 'name should be present' do
-      subject.name = ''
-      expect(subject).to_not be_valid
+      @user.name = ''
+      expect(@user).to_not be_valid
     end
 
   end
