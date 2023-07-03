@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Expense, type: :model do
   # tests go here
   before :each do
-    @user = User.create(name: 'Tom') 
+    @user = User.create(name: 'Tom')
     @expense = Expense.create(author: @user, name: 'expense1', amount: 4.0)
   end
 
@@ -25,5 +27,4 @@ RSpec.describe Expense, type: :model do
       expect(@expense).to_not be_valid
     end
   end
-
 end

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   # tests go here
   before :each do
-    @user = User.create(name: 'Tom') 
+    @user = User.create(name: 'Tom')
     @category = Category.create(author: @user, name: 'category1', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png')
   end
 
@@ -17,5 +19,4 @@ RSpec.describe Category, type: :model do
       expect(@category).to_not be_valid
     end
   end
-
 end
