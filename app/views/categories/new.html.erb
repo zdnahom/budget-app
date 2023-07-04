@@ -1,2 +1,11 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<%= form_with(model: @category, url: categories_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :name, 'Category name' %>
+    <%= form.text_area :name %>
+  </div>
+  <div>
+    <%= form.label :name, 'Icon' %>
+    <%= form.text_area :icon %>
+  </div>
+  <%= form.submit "Add category" %>
+<% end %>
