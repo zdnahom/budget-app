@@ -4,7 +4,7 @@ RSpec.describe Expense, type: :model do
   include Devise::Test::IntegrationHelpers
   # tests go here
   before :each do
-    @user = User.create(name: 'Tom', email: 'nahom@gmail.com', password: '123456',confirmed_at: Time.now)
+    @user = User.create(name: 'Tom', email: 'nahom@gmail.com', password: '123456', confirmed_at: Time.now)
     sign_in :@user
     @expense = Expense.create(author: @user, name: 'expense1', amount: 4.0)
   end
