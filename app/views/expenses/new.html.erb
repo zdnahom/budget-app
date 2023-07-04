@@ -1,2 +1,15 @@
-<h1>Expenses#new</h1>
-<p>Find me in app/views/expenses/new.html.erb</p>
+<%= form_with(model: @expense, url: category_expenses_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :name, 'Expense name' %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :amount, 'Amount' %>
+    <%= form.number_field :amount %>
+  </div>
+  <div>
+    <%= form.label :category_id, 'Category' %>
+    <%= form.collection_select(:selected_categories, @categories, :id, :name, { } ,{ multiple: true }) %>
+  </div>
+  <%= form.submit "Add Expense" %>
+<% end %>
