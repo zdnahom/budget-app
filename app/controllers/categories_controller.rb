@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  
+
   def index
     @categories = current_user.categories.all
   end
@@ -20,10 +20,10 @@ class CategoriesController < ApplicationController
       render :new
     end
   end
+
   private
 
   def category_params
-    permitted_params = params.require(:category).permit(:name, :icon)
-    permitted_params
+    params.require(:category).permit(:name, :icon)
   end
 end

@@ -17,7 +17,7 @@ class ExpensesController < ApplicationController
 
       selected_category_ids.uniq.each do |category_id|
         category = current_user.categories.find(category_id)
-        ExpenseCategory.create(expense: expense, category: category)
+        ExpenseCategory.create(expense:, category:)
       end
       redirect_to category_expenses_path, notice: 'Expense created successfully'
     else
@@ -29,7 +29,6 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    permitted_params = params.require(:expense).permit(:name, :amount)
-    permitted_params
+    params.require(:expense).permit(:name, :amount)
   end
 end

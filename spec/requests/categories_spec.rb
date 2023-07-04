@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Categories", type: :request do
+RSpec.describe 'Categories', type: :request do
   include Devise::Test::IntegrationHelpers
 
   let!(:user) { User.create(name: 'Tom', email: 'nahom2@gmail.com', password: '123456', confirmed_at: Time.now) }
@@ -9,34 +9,34 @@ RSpec.describe "Categories", type: :request do
     sign_in user
   end
 
-  let!(:valid_attributes) { {author: user, name: 'category1', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png' }}
+  let!(:valid_attributes) { { author: user, name: 'category1', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png' } }
 
-  let!(:invalid_attributes) { {author: user, name: '', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png' }}
+  let!(:invalid_attributes) { { author: user, name: '', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png' } }
 
-  describe "GET /index" do
-    it "should return http success" do
+  describe 'GET /index' do
+    it 'should return http success' do
       get categories_path
       expect(response).to be_successful
     end
-    it "should render the correct template" do
+    it 'should render the correct template' do
       get categories_path
       expect(response).to render_template('index')
     end
   end
 
-  describe "GET /new" do
+  describe 'GET /new' do
     it 'should return a successful response' do
       get new_category_path
       expect(response).to be_successful
     end
 
-    it "should render the correct template" do
+    it 'should render the correct template' do
       get new_category_path
       expect(response).to render_template('new')
-    end 
+    end
   end
 
-  describe "POST /create" do
+  describe 'POST /create' do
     context 'with valid attributes' do
       it 'creates a new category' do
         expect do
@@ -53,5 +53,4 @@ RSpec.describe "Categories", type: :request do
       end
     end
   end
-
 end
