@@ -1,11 +1,22 @@
-<%= form_with(model: @category, url: categories_path, method: :post) do |form| %>
-  <div>
-    <%= form.label :name, 'Category name' %>
-    <%= form.text_area :name %>
+<div>
+  <div class="flex items-center justify-between p-4" style="background-color: #3778c2">
+    <%= link_to categories_path do %>
+      <i class="fa-solid fa-arrow-left text-white text-2xl"></i>
+    <% end %>
+    <h2 class="text-white text-2xl">ADD NEW CATEGORY</h2>
+    <span class="text-white"></span>
   </div>
-  <div>
-    <%= form.label :name, 'Icon' %>
-    <%= form.text_area :icon %>
+  <div class="flex flex-col gap-2 items-center justify-center pt-10">
+    <%= form_with(model: @category, url: categories_path, html: {class: "flex flex-col gap-3"}) do |form| %>
+      <div class="flex flex-col gap-1">
+        <%= form.label :name, 'Category name:', class: "text-2xl" %>
+        <%= form.text_field :name, class: 'input input-bordered input-primary w-full max-w-xs' %>
+      </div>
+      <div class="flex flex-col">
+        <%= form.label :name, 'Icon:', class: "text-2xl" %>
+        <%= form.text_field :icon, class: 'input input-bordered input-primary w-full max-w-xs' %>
+      </div>
+      <%= form.submit "Save", class: "p-2 text-white text-2xl rounded-lg", style: "background-color: #51b523" %>
+    <% end %>
   </div>
-  <%= form.submit "Add category" %>
-<% end %>
+</div>
