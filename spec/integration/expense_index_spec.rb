@@ -5,14 +5,14 @@ RSpec.describe 'Expense index page', type: :system do
 
   describe 'index' do
     before(:each) do
-     @user = User.create(name: 'Tom', email: 'nahom@gmail.com', password: '123456', confirmed_at: Time.now)
-     sign_in @user
-     @category = Category.create(author: @user, name: 'category1', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png')
-     @expense = Expense.create(author: @user, name: 'expense1', amount: 4.0)
-     ExpenseCategory.create(expense: @expense, category: @category)
-     visit category_expenses_path(@category)
+      @user = User.create(name: 'Tom', email: 'nahom@gmail.com', password: '123456', confirmed_at: Time.now)
+      sign_in @user
+      @category = Category.create(author: @user, name: 'category1', icon: 'https://i.ibb.co/gm68B4C/Mc-Donalds.png')
+      @expense = Expense.create(author: @user, name: 'expense1', amount: 4.0)
+      ExpenseCategory.create(expense: @expense, category: @category)
+      visit category_expenses_path(@category)
     end
-    
+
     it 'renders name of the expense added' do
       expect(page).to have_content(@expense.name)
     end
@@ -26,9 +26,8 @@ RSpec.describe 'Expense index page', type: :system do
     end
 
     it 'When click on Add a new expense, it redirects to Add expense page' do
-        click_on 'Add a new expense'
-        expect(page).to have_content('ADD NEW EXPENSE')
+      click_on 'Add a new expense'
+      expect(page).to have_content('ADD NEW EXPENSE')
     end
-
   end
 end
