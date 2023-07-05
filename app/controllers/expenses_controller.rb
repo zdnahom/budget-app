@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
   def index
-    @expenses = current_user.expenses.all
+    category = current_user.categories.find(params[:category_id])
+    @expenses = category.expenses.includes(:categories).all.order(created_at: :desc)
   end
 
   def new
