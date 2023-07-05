@@ -1,2 +1,31 @@
-<h1>Expenses#index</h1>
-<p>Find me in app/views/expenses/index.html.erb</p>
+<div class="md:container h-screen relatve" style="background-color: #f5f6f8">
+    <div class="flex items-center justify-between p-4" style="background-color: #3778c2">
+        <%= link_to categories_path do %>
+            <i class="fa-solid fa-arrow-left text-white text-2xl"></i>
+        <% end %>
+        <h2 class="text-white text-2xl">EXPENSES</h2>
+        <i class="fa-solid fa-magnifying-glass text-white text-2xl"></i>
+    </div>
+  <div class="flex flex-col p-3 gap-2 bg-inherit h-3/4">
+    <div class="flex p-4 justify-between bg-white">
+        <span class="text-2xl font-bold">Total Sum : </span>
+        <span class="text-2xl font-light">$<%= number_with_precision(@expenses.sum(:amount), precision: 2)%></span>
+    </div>
+    <ul class="flex flex-col gap-2 p-4 overflow-auto">
+        <% @expenses.each do |expense|%>
+            <li class="flex p-3 gap-2 bg-white rounded">
+            <div class="flex flex-col w-full">
+                <div class="flex justify-between p-4">
+                <p><%= expense.name%></p>
+                <span class="font-bold">$<%= number_with_precision(expense.amount, precision: 2)%></span>
+                </div>
+                <span class="p-4 text-gray-400"><%= expense.created_at.strftime("%d %B %Y")%></span>
+            </div>
+            </li>
+        <% end %>
+    </ul>
+  </div>
+  <div class="flex p-4 absolute bottom-0 w-full" style="background-color: #51b523">
+    <%= link_to 'Add a new expense', new_category_expense_path, class: 'w-full border-2 text-center text-white text-3xl p-4' %>
+  </div>
+</div>
