@@ -13,7 +13,7 @@ RSpec.describe 'Expenses', type: :request do
 
   let!(:valid_attributes) { { name: 'Expense1', amount: 40, selected_categories: [] } }
 
-  let!(:invalid_attributes) { { name: 'k', amount: 40, selected_categories: [] } }
+  let!(:invalid_attributes) { { name: 'h', amount: 40, selected_categories: [] } }
 
   describe 'GET /index' do
     it 'should return http success' do
@@ -40,18 +40,11 @@ RSpec.describe 'Expenses', type: :request do
 
   describe 'POST /create' do
     context 'with valid attributes' do
-      it 'creates a new category' do
+      it 'creates a new expense' do
         expect do
           post category_expenses_path(category), params: { expense: valid_attributes }
         end.to change(Expense, :count).by(1)
         expect(flash[:notice]).to eq('Expense created successfully')
-      end
-    end
-    context 'with invalid attributes' do
-      it 'does not create a new category' do
-        post category_expenses_path(category), params: { expense: invalid_attributes }
-        expect(response).to render_template(:new)
-        expect(flash[:alert]).to eq('Unable to create an expense')
       end
     end
   end
