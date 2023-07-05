@@ -17,7 +17,7 @@
         <%= form.number_field :amount, class: 'input input-bordered input-primary w-full max-w-xs' %>
       </div>
       <div class="flex flex-col">
-        <%= form.label :category_id, 'Category' %>
+        <%= form.label :selected_categories, 'Choose Categories:' %>
         <%= form.collection_select(:selected_categories, @categories, :id, :name, { } ,{ multiple: true }) %>
       </div>
       <%= form.submit "Save", class: "p-2 text-white text-2xl rounded-lg", style: "background-color: #51b523" %>
