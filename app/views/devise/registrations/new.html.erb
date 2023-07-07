@@ -1,0 +1,30 @@
+
+<div class="flex flex-col gap-1 h-screen" style="background-color: #f5f6f8">
+  <div class="flex items-center justify-between p-4" style="background-color: #3778c2">
+    <%= link_to root_for_non_logged_in_path do %>
+      <i class="fa-solid fa-arrow-left text-white text-2xl"></i>
+    <% end %>
+    <h2 class="text-white text-2xl">Register</h2>
+    <span class="text-white">Next</span>
+  </div>
+  <div class="flex flex-col gap-1">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "flex flex-col gap-1"}) do |f| %>
+        <div class="field">
+          <%= f.text_field :name, placeholder: "Full name", class: "w-full h-12"  %>
+        </div>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "w-full h-12" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "w-full h-12" %>
+        </div>
+        
+        <div class="flex w-full justify-center p-2">
+          <%= f.submit "Sign up", class: "p-2 w-full rounded-lg text-2xl text-white", style: "background-color: #3778c2" %>
+        </div>
+        
+    <% end %>
+  </div>
+</div>

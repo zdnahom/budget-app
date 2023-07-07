@@ -1,0 +1,35 @@
+<div class="md:container h-screen relatve">
+  <div class="flex flex-col p-2 gap-2" style="background-color: #3778c2">
+    <div class="flex items-center justify-between p-2">
+        <i class="fa-solid fa-bars text-white text-2xl"></i>
+        <h2 class="text-white text-2xl">CATEGORIES</h2>
+        <i class="fa-solid fa-magnifying-glass text-white text-2xl"></i>
+    </div>
+    <div class="flex p-2 justify-between ">
+        <span class="text-white"></span>
+        <span class="text-white">Most ancient</span>
+        <span class="text-white">Most recent</span>
+    </div>
+  </div>
+  <div class="flex flex-col p-3 bg-inherit h-3/4" style="background-color: #f5f6f8">
+    <ul class="flex flex-col gap-2 p-4 overflow-auto">
+      <% @categories.each do |category|%>
+        <%= link_to category_expenses_path(category) do %>
+          <li class="flex p-3 gap-2 bg-white rounded">
+            <img src=<%= category.icon %> alt="category icon" class="w-1/4"/>
+            <div class="flex flex-col w-full">
+              <div class="flex justify-between p-4">
+                <p><%= category.name%></p>
+                <span class="font-bold">$<%= number_with_precision(category.expenses.sum(:amount), precision: 2)%></span>
+              </div>
+              <span class="p-4 text-gray-400"><%= category.created_at.strftime("%d %B %Y")%></span>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="flex p-4 absolute bottom-0 w-full" style="background-color: #51b523">
+    <%= link_to 'Add a new category', new_category_path, class: 'w-full border-2 text-center text-white text-3xl p-4' %>
+  </div>
+</div>

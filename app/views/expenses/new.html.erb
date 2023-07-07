@@ -1,0 +1,26 @@
+<div>
+  <div class="flex items-center justify-between p-4" style="background-color: #3778c2">
+    <%= link_to category_expenses_path do %>
+      <i class="fa-solid fa-arrow-left text-white text-2xl"></i>
+    <% end %>
+    <h2 class="text-white text-2xl">ADD NEW EXPENSE</h2>
+    <span class="text-white"></span>
+  </div>
+  <div class="flex flex-col gap-2 items-center justify-center pt-10">
+    <%= form_with(model: @expense, url: category_expenses_path, html: {class: "flex flex-col gap-3"}) do |form| %>
+      <div class="flex flex-col gap-1">
+        <%= form.label :name, 'Expense name:', class: "text-2xl" %>
+        <%= form.text_field :name, class: 'input input-bordered input-primary w-full max-w-xs' %>
+      </div>
+      <div class="flex flex-col">
+        <%= form.label :amount, 'Amount:', class: "text-2xl" %>
+        <%= form.number_field :amount, class: 'input input-bordered input-primary w-full max-w-xs' %>
+      </div>
+      <div class="flex flex-col">
+        <%= form.label :selected_categories, 'Choose Categories:' %>
+        <%= form.collection_select(:selected_categories, @categories, :id, :name, { } ,{ multiple: true }) %>
+      </div>
+      <%= form.submit "Save", class: "p-2 text-white text-2xl rounded-lg", style: "background-color: #51b523" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="flex flex-col gap-1 h-screen" style="background-color: #f5f6f8">
+  <div class="flex items-center justify-between p-4" style="background-color: #3778c2">
+    <%= link_to root_for_non_logged_in_path do %>
+      <i class="fa-solid fa-arrow-left text-white text-2xl"></i>
+    <% end %>
+    <h2 class="text-white text-2xl">LOGIN</h2>
+    <span class="text-white">Log In</span>
+  </div>
+  <div class="flex flex-col gap-2">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "flex flex-col gap-1"}) do |f| %>
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "w-full h-12" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "w-full h-12" %>
+        </div>
+
+        <div class="flex w-full justify-center p-2">
+          <%= f.submit "Log in", class: "p-2 w-full rounded-lg text-2xl text-white", style: "background-color: #3778c2" %>
+        </div>
+        
+    <% end %>
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "self-center text-gray-500" %><br />
+  </div>
+</div>
